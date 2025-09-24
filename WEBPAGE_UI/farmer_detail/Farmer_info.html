@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Krishi Sahayak - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header class="header-top">
+            <div class="settings">
+                <button class="settings-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i> <span id="settings-btn-text">English</span>
+                </button>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="language-option active" data-lang="en">
+                        <i class="fas fa-check"></i> <span class="lang-text">English</span>
+                    </div>
+                    <div class="language-option" data-lang="or">
+                        <i class="fas"></i> <span class="lang-text">ଓଡ଼ିଆ (Odia)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-actions">
+                <span class="user-name" id="user-name"></span>
+            </div>
+        </header>
+        <div class="header-main">
+            <div class="app-title">
+                <h1 id="app-title">Odisha Krishi Sahayak</h1>
+                <p id="app-tagline">Your Partner in Farming</p>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="card" id="farmer-details-card">
+                <h2 class="card-title">Farmer Details</h2>
+                <div class="notification" id="notification"></div>
+                <div class="input-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name">
+                </div>
+                <div class="input-group">
+                    <label for="middle-name">Middle Name</label>
+                    <input type="text" id="middle-name" placeholder="Enter your middle name">
+                </div>
+                <div class="input-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" placeholder="Enter your last name">
+                </div>
+                <div class="input-group">
+                    <label for="mobile-no">Mobile Number</label>
+                    <div class="mobile-input-container">
+                        <span class="mobile-prefix">+91</span>
+                        <input type="tel" id="mobile-no" class="mobile-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email address">
+                </div>
+                <div class="input-group">
+                    <label for="aadhaar-no">Aadhaar Number</label>
+                    <input type="text" id="aadhaar-no" placeholder="Enter your 12-digit Aadhaar number">
+                </div>
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="Enter your full address">
+                </div>
+                <button class="cta-button" id="save-details-btn">
+                    <i class="fas fa-save"></i> <span>Save Details</span>
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p id="footer-text">Odisha Krishi Sahayak - Empowering Farmers with Data-Driven Insights</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

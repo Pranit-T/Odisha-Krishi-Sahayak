@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Krishi Sahayak - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        
+        <div class="header">
+            <div class="app-info">
+                <i class="fas fa-seedling app-icon"></i>
+                <div class="app-title">
+                    <h1 id="app-title">Odisha Krishi Sahayak</h1>
+                    <p id="app-tagline">Your Partner in Farming</p>
+                </div>
+            </div>
+            
+            <div class="settings">
+                <button class="settings-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i> <span id="settings-btn-text">English</span>
+                </button>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="language-option active" data-lang="en">
+                        <i class="fas fa-check"></i> <span class="lang-text">English</span>
+                    </div>
+                    <div class="language-option" data-lang="or">
+                        <i class="fas"></i> <span class="lang-text">ଓଡ଼ିଆ (Odia)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="welcome-section">
+                <h2 class="welcome-title" id="welcome-title">Welcome to Odisha Krishi Sahayak</h2>
+                <p class="welcome-text" id="welcome-text">Your digital partner for smarter farming. Get data-driven insights and AI-powered recommendations to maximize your crop yield.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-robot feature-icon"></i>
+                        <div>
+                            <h3 id="feature-ai-title">AI-Powered Insights</h3>
+                            <p id="feature-ai-text">Get accurate predictions for crop yield and personalized recommendations.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tint feature-icon"></i>
+                        <div>
+                            <h3 id="feature-irrigation-title">Smart Irrigation</h3>
+                            <p id="feature-irrigation-text">Optimize water usage with data-driven irrigation schedules.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bug feature-icon"></i>
+                        <div>
+                            <h3 id="feature-pest-title">Pest Management</h3>
+                            <p id="feature-pest-text">Identify and manage pests with timely alerts and solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-section">
+                <div class="auth-card" id="login-card">
+                    <div class="notification" id="notification"></div>
+                    <h3 class="auth-title" id="login-title">Login to Your Account</h3>
+                    <div class="input-group">
+                        <label for="login-email" id="login-email-label">Email Address</label>
+                        <input type="email" id="login-email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password" id="login-password-label">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="cta-button" id="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> <span id="login-btn-text">Sign In</span>
+                    </button>
+                    <div class="toggle-link" id="show-register">New User? Register here</div>
+                </div>
+                
+                <div class="auth-card hidden" id="register-card">
+                    <h3 class="auth-title" id="register-title">Create New Account</h3>
+                    <div class="input-group">
+                        <label for="signup-name" id="signup-name-label">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email" id="signup-email-label">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password" id="signup-password-label">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password">
+                    </div>
+                    <button class="cta-button" id="signup-btn">
+                        <i class="fas fa-user-plus"></i> <span id="signup-btn-text">Create Account</span>
+                    </button>
+                    <div class="toggle-link" id="show-login">Already a user? Sign in here</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p id="footer-text-1">Odisha Krishi Sahayak - Empowering Farmers with Data-Driven Insights</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
