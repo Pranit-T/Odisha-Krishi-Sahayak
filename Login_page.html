@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Krishi Sahayak - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9f2;
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+        
+        .app-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .app-icon {
+            font-size: 2.5rem;
+            color: #2d6a4f;
+        }
+        
+        .app-title h1 {
+            font-size: 1.8rem;
+            color: #2d6a4f;
+        }
+        
+        .app-title p {
+            font-size: 1rem;
+            color: #40916c;
+        }
+        
+        .settings {
+            position: relative;
+        }
+        
+        .settings-btn {
+            background: none;
+            border: 1px solid #2d6a4f;
+            color: #2d6a4f;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .settings-btn:hover {
+            background-color: #2d6a4f;
+            color: white;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            z-index: 100;
+            min-width: 150px;
+        }
+        
+        .language-option {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-option:hover {
+            background-color: #f0f7f4;
+        }
+        
+        .language-option.active {
+            background-color: #2d6a4f;
+            color: white;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            align-items: center;
+        }
+        
+        .welcome-section {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .welcome-title {
+            font-size: 2.5rem;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .features {
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: #52b788;
+        }
+        
+        .auth-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .auth-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        
+        .auth-title {
+            font-size: 1.5rem;
+            color: #2d6a4f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #52b788;
+            box-shadow: 0 0 0 2px rgba(82, 183, 136, 0.2);
+        }
+        
+        .cta-button {
+            background-color: #52b788;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: #40916c;
+            transform: translateY(-2px);
+        }
+        
+        .cta-button:active {
+            transform: translateY(0);
+        }
+        
+        .toggle-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #40916c;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .toggle-link:hover {
+            color: #2d6a4f;
+        }
+        
+        .sih-logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .notification {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+            text-align: center;
+        }
+        
+        .notification.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .welcome-section, .auth-section {
+                width: 100%;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+        }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/Pranit-T/Odisha-Krishi-Sahayak/b9149e51ede0b2f7b877cf3e12a06ee2b9683752/SIH2025-logo.png" alt="SIH 2025 Logo" class="sih-logo">
+        
+        <div class="header">
+            <div class="app-info">
+                <i class="fas fa-seedling app-icon"></i>
+                <div class="app-title">
+                    <h1 id="app-title">Odisha Krishi Sahayak</h1>
+                    <p id="app-tagline">Your Partner in Farming</p>
+                </div>
+            </div>
+            
+            <div class="settings">
+                <button class="settings-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i> <span id="settings-btn-text">English</span>
+                </button>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="language-option active" data-lang="en">
+                        <i class="fas fa-check"></i> <span class="lang-text">English</span>
+                    </div>
+                    <div class="language-option" data-lang="or">
+                        <i class="fas"></i> <span class="lang-text">ଓଡ଼ିଆ (Odia)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="welcome-section">
+                <h2 class="welcome-title" id="welcome-title">Welcome to Odisha Krishi Sahayak</h2>
+                <p class="welcome-text" id="welcome-text">Your digital partner for smarter farming. Get data-driven insights and AI-powered recommendations to maximize your crop yield.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-robot feature-icon"></i>
+                        <div>
+                            <h3 id="feature-ai-title">AI-Powered Insights</h3>
+                            <p id="feature-ai-text">Get accurate predictions for crop yield and personalized recommendations.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tint feature-icon"></i>
+                        <div>
+                            <h3 id="feature-irrigation-title">Smart Irrigation</h3>
+                            <p id="feature-irrigation-text">Optimize water usage with data-driven irrigation schedules.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bug feature-icon"></i>
+                        <div>
+                            <h3 id="feature-pest-title">Pest Management</h3>
+                            <p id="feature-pest-text">Identify and manage pests with timely alerts and solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-section">
+                <div class="auth-card" id="login-card">
+                    <div class="notification" id="notification"></div>
+                    <h3 class="auth-title" id="login-title">Login to Your Account</h3>
+                    <div class="input-group">
+                        <label for="login-email" id="login-email-label">Email Address</label>
+                        <input type="email" id="login-email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password" id="login-password-label">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="cta-button" id="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> <span id="login-btn-text">Sign In</span>
+                    </button>
+                    <div class="toggle-link" id="show-register">New User? Register here</div>
+                </div>
+                
+                <div class="auth-card hidden" id="register-card">
+                    <h3 class="auth-title" id="register-title">Create New Account</h3>
+                    <div class="input-group">
+                        <label for="signup-name" id="signup-name-label">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email" id="signup-email-label">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password" id="signup-password-label">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password">
+                    </div>
+                    <button class="cta-button" id="signup-btn">
+                        <i class="fas fa-user-plus"></i> <span id="signup-btn-text">Create Account</span>
+                    </button>
+                    <div class="toggle-link" id="show-login">Already a user? Sign in here</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p id="footer-text-1">Odisha Krishi Sahayak - Empowering Farmers with Data-Driven Insights</p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Odisha Krishi Sahayak - Login",
+                appTitle: "Odisha Krishi Sahayak",
+                appTagline: "Your Partner in Farming",
+                settingsBtn: "English",
+                welcomeTitle: "Welcome to Odisha Krishi Sahayak",
+                welcomeText: "Your digital partner for smarter farming. Get data-driven insights and AI-powered recommendations to maximize your crop yield.",
+                featureAITitle: "AI-Powered Insights",
+                featureAIText: "Get accurate predictions for crop yield and personalized recommendations.",
+                featureIrrigationTitle: "Smart Irrigation",
+                featureIrrigationText: "Optimize water usage with data-driven irrigation schedules.",
+                featurePestTitle: "Pest Management",
+                featurePestText: "Identify and manage pests with timely alerts and solutions.",
+                loginTitle: "Login to Your Account",
+                loginEmailLabel: "Email Address",
+                loginEmailPlaceholder: "Enter your email",
+                loginPasswordLabel: "Password",
+                loginPasswordPlaceholder: "Enter your password",
+                loginBtnText: "Sign In",
+                toggleToRegister: "New User? Register here",
+                registerTitle: "Create New Account",
+                signupNameLabel: "Full Name",
+                signupNamePlaceholder: "Enter your full name",
+                signupEmailLabel: "Email Address",
+                signupEmailPlaceholder: "Enter your email",
+                signupPasswordLabel: "Password",
+                signupPasswordPlaceholder: "Create a password",
+                signupBtnText: "Create Account",
+                toggleToLogin: "Already a user? Sign in here",
+                footerText1: "Odisha Krishi Sahayak - Empowering Farmers with Data-Driven Insights",
+                alertEmptyFields: "Please fill all fields",
+                alertLoginFailed: "Login failed. Please check your credentials.",
+                alertRegistrationSuccess: "Registration successful! You can now sign in.",
+                alertRegistrationFailed: "Registration failed. Please try again.",
+            },
+            or: {
+                title: "ଓଡ଼ିଶା କୃଷି ସହାୟକ - ଲଗଇନ",
+                appTitle: "ଓଡ଼ିଶା କୃଷି ସହାୟକ",
+                appTagline: "ଆପଣଙ୍କର କୃଷି ସାଥୀ",
+                settingsBtn: "ଓଡ଼ିଆ",
+                welcomeTitle: "ଓଡ଼ିଶା କୃଷି ସହାୟକକୁ ସ୍ୱାଗତ",
+                welcomeText: "ଉନ୍ନତ ଚାଷ ପାଇଁ ଆପଣଙ୍କର ଡିଜିଟାଲ୍ ସାଥୀ। ଆପଣଙ୍କ ଫସଲ ଉତ୍ପାଦନକୁ ବଢାଇବା ପାଇଁ ତଥ୍ୟ-ଆଧାରିତ ସୂଚନା ଏବଂ AI-ଶକ୍ତିପ୍ରାପ୍ତ ପରାମର୍ଶ ପାଆନ୍ତୁ।",
+                featureAITitle: "AI-ଶକ୍ତିପ୍ରାପ୍ତ ସୂଚନା",
+                featureAIText: "ଫସଲ ଉତ୍ପାଦନ ଏବଂ ବ୍ୟକ୍ତିଗତ ପରାମର୍ଶ ପାଇଁ ସଠିକ୍ ଅନୁମାନ ପାଆନ୍ତୁ।",
+                featureIrrigationTitle: "ସ୍ମାର୍ଟ ଜଳସେଚନ",
+                featureIrrigationText: "ତଥ୍ୟ-ଆଧାରିତ ଜଳସେଚନ କାର୍ଯ୍ୟସୂଚୀ ସହିତ ଜଳ ବ୍ୟବହାରକୁ ସର୍ବାଧିକ କରନ୍ତୁ।",
+                featurePestTitle: "କୀଟ ପରିଚାଳନା",
+                featurePestText: "ସମୟାନୁସାରେ ସତର୍କତା ଏବଂ ସମାଧାନ ସହିତ କୀଟମାନଙ୍କୁ ଚିହ୍ନଟ ଏବଂ ପରିଚାଳନା କରନ୍ତୁ।",
+                loginTitle: "ଆପଣଙ୍କ ଆକାଉଣ୍ଟକୁ ଲଗଇନ କରନ୍ତୁ",
+                loginEmailLabel: "ଇମେଲ ଠିକଣା",
+                loginEmailPlaceholder: "ଆପଣଙ୍କ ଇମେଲ୍ ପ୍ରବେଶ କରନ୍ତୁ",
+                loginPasswordLabel: "ପାସୱାର୍ଡ",
+                loginPasswordPlaceholder: "ଆପଣଙ୍କ ପାସୱାର୍ଡ ପ୍ରବେଶ କରନ୍ତୁ",
+                loginBtnText: "ସାଇନ୍ ଇନ୍",
+                toggleToRegister: "ନୂଆ ଉପଭୋକ୍ତା? ଏଠାରେ ପଞ୍ଜିକରଣ କରନ୍ତୁ",
+                registerTitle: "ନୂଆ ଆକାଉଣ୍ଟ ତିଆରି କରନ୍ତୁ",
+                signupNameLabel: "ପୂରା ନାମ",
+                signupNamePlaceholder: "ଆପଣଙ୍କ ପୂରା ନାମ ପ୍ରବେଶ କରନ୍ତୁ",
+                signupEmailLabel: "ଇମେଲ ଠିକଣା",
+                signupEmailPlaceholder: "ଆପଣଙ୍କ ଇମେଲ୍ ପ୍ରବେଶ କରନ୍ତୁ",
+                signupPasswordLabel: "ପାସୱାର୍ଡ",
+                signupPasswordPlaceholder: "ଏକ ପାସୱାର୍ଡ ତିଆରି କରନ୍ତୁ",
+                signupBtnText: "ଆକାଉଣ୍ଟ ତିଆରି କରନ୍ତୁ",
+                toggleToLogin: "ପୂର୍ବରୁ ଉପଭୋକ୍ତା? ଏଠାରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ",
+                footerText1: "ଓଡ଼ିଶା କୃଷି ସହାୟକ - ତଥ୍ୟ-ଆଧାରିତ ଦୃଷ୍ଟିକୋଣ ସହିତ ଚାଷୀମାନଙ୍କୁ ସଶକ୍ତ କରିବା",
+                alertEmptyFields: "ଦୟାକରି ସମସ୍ତ ଫିଲ୍ଡ ଭରନ୍ତୁ।",
+                alertLoginFailed: "ଲଗଇନ ବିଫଳ ହେଲା। ଦୟାକରି ଆପଣଙ୍କ ପ୍ରମାଣପତ୍ର ଯାଞ୍ଚ କରନ୍ତୁ।",
+                alertRegistrationSuccess: "ପଞ୍ଜିକରଣ ସଫଳ ହେଲା! ଆପଣ ବର୍ତ୍ତମାନ ସାଇନ୍ ଇନ୍ କରିପାରିବେ।",
+                alertRegistrationFailed: "ପଞ୍ଜିକରଣ ବିଫଳ ହେଲା। ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ।",
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Show notification message
+        function showNotification(message, type = 'error') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        function updateUI(lang) {
+            const t = translations[lang];
+
+            // Update all text elements based on the new language
+            document.title = t.title;
+            document.getElementById('app-title').textContent = t.appTitle;
+            document.getElementById('app-tagline').textContent = t.appTagline;
+            document.getElementById('settings-btn-text').textContent = t.settingsBtn;
+            document.getElementById('welcome-title').textContent = t.welcomeTitle;
+            document.getElementById('welcome-text').textContent = t.welcomeText;
+            document.getElementById('feature-ai-title').textContent = t.featureAITitle;
+            document.getElementById('feature-ai-text').textContent = t.featureAIText;
+            document.getElementById('feature-irrigation-title').textContent = t.featureIrrigationTitle;
+            document.getElementById('feature-irrigation-text').textContent = t.featureIrrigationText;
+            document.getElementById('feature-pest-title').textContent = t.featurePestTitle;
+            document.getElementById('feature-pest-text').textContent = t.featurePestText;
+            document.getElementById('login-title').textContent = t.loginTitle;
+            document.getElementById('login-email-label').textContent = t.loginEmailLabel;
+            document.getElementById('login-email').placeholder = t.loginEmailPlaceholder;
+            document.getElementById('login-password-label').textContent = t.loginPasswordLabel;
+            document.getElementById('login-password').placeholder = t.loginPasswordPlaceholder;
+            document.getElementById('login-btn-text').textContent = t.loginBtnText;
+            document.getElementById('show-register').textContent = t.toggleToRegister;
+            document.getElementById('register-title').textContent = t.registerTitle;
+            document.getElementById('signup-name-label').textContent = t.signupNameLabel;
+            document.getElementById('signup-name').placeholder = t.signupNamePlaceholder;
+            document.getElementById('signup-email-label').textContent = t.signupEmailLabel;
+            document.getElementById('signup-email').placeholder = t.signupEmailPlaceholder;
+            document.getElementById('signup-password-label').textContent = t.signupPasswordLabel;
+            document.getElementById('signup-password').placeholder = t.signupPasswordPlaceholder;
+            document.getElementById('signup-btn-text').textContent = t.signupBtnText;
+            document.getElementById('show-login').textContent = t.toggleToLogin;
+            document.getElementById('footer-text-1').textContent = t.footerText1;
+        }
+
+        // Language toggle functionality
+        const settingsBtn = document.getElementById('settings-btn');
+        const languageDropdown = document.getElementById('language-dropdown');
+        const languageOptions = document.querySelectorAll('.language-option');
+        
+        settingsBtn.addEventListener('click', function() {
+            languageDropdown.style.display = languageDropdown.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentLang = lang;
+                updateUI(currentLang);
+                
+                languageDropdown.style.display = 'none';
+            });
+        });
+        
+        document.addEventListener('click', function(event) {
+            if (!settingsBtn.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('show-register').addEventListener('click', function() {
+            document.getElementById('login-card').classList.add('hidden');
+            document.getElementById('register-card').classList.remove('hidden');
+        });
+        
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('register-card').classList.add('hidden');
+            document.getElementById('login-card').classList.remove('hidden');
+        });
+        
+        document.getElementById('login-btn').addEventListener('click', function() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (!email || !password) {
+                showNotification(translations[currentLang].alertEmptyFields, 'error');
+                return;
+            }
+            
+            // For demo purposes, we'll just check if fields are filled
+            window.location.href = 'dashboard.html';
+        });
+        
+        document.getElementById('signup-btn').addEventListener('click', function() {
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            
+            if (!name || !email || !password) {
+                showNotification(translations[currentLang].alertEmptyFields, 'error');
+                return;
+            }
+            
+            // For demo purposes, we'll just check if fields are filled
+            showNotification(translations[currentLang].alertRegistrationSuccess, 'success');
+            document.getElementById('show-login').click(); // Switch to login view
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI(currentLang);
+        });
+        
+        const style = document.createElement('style');
+        style.textContent = '.hidden { display: none !important; }';
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
